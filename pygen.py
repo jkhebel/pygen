@@ -37,18 +37,20 @@ def cli():
 @c.option('--case', '-c', 'case',
           type=c.Choice(['upper', 'lower', 'camel'],
                         case_sensitive=False), default='lower')
-@c.option('--caps/--no-caps')  # TODO implement requirement checks
+@c.option('--caps/--no-caps')
 @c.option('--symbols/--no-symbols')
 @c.option('--min-length')
 @c.option('--max-length')
-def new(num, sep, case, caps, symbols, min_length, max_length):
+def diceware(num, sep, case, caps, symbols, min_length, max_length):
     passwords = []
     for _ in range(num):
         code = roll_dice()
         passwords.append(words[code])
     c.echo(f"Your new password is:\t{sep.join(passwords)}")
-    print(case)  # TODO modify case
 
-# TODO save
+# TODO modify case
+# TODO save (different APIs)
 # TODO copy to clipboard
 # TODO reroll
+# TODO implement requirement checks
+# TODO implement other password schemas
